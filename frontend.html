@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(4,auto);
+            gap: 10px;
+            display: flex ;
+            justify-content: space-around;
+            text-align: center;
+        }
+        p+img{
+            height: 50px;
+            margin-top: -10px;
+        }
+        p{
+            margin-top: -8px;
+            font-size: 19px;
+            opacity: .7;
+        }
+        body>div{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="container"></div> -->
+</body>
+</html>
+<script>
+    var getData=JSON.parse(localStorage.getItem("backnedObj"))
+    // console.log(getData)
+
+
+    getData.forEach(function(elem){
+        // console.log(elem)
+        var box = document.createElement("div") ;
+        // box.style.display="flex"
+        var imgs = document.createElement("img");
+        imgs.setAttribute("src",elem.inv_img) ;
+        var names = document.createElement("h2") ;
+        names.innerText=elem.inv_name ;
+        var rols = document.createElement("p") ;
+        rols.innerText=elem.inv_role ;
+        
+        var compLogos = document.createElement("img");
+        compLogos.setAttribute("src",elem.inv_compLogo) ;
+
+        box.append(imgs,names,rols,compLogos) ;
+        document.querySelector("body").append(box) ;
+
+    })
+
+</script>
